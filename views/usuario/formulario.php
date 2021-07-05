@@ -1,10 +1,11 @@
 <h1>Formulario</h1>
 
-<?php if(isset($_SESSION['register']) && $_SESSION['register']): ?>
+<?php if(isset($_SESSION['register']) && $_SESSION['register'] == 'Complete'): ?>
     <strong>Registro Completado Correctamente</strong>
-<?php else: ?>
+<?php elseif(isset($_SESSION['register']) && $_SESSION['register'] == 'Failed'): ?>
     <strong>Regsitro Fallido</strong>
 <?php endif; ?>
+<?php Utils::deleteSession('register'); ?>
 
 <form action="<?=base_url?>usuario/save" method="POST">
     <label for="nombre">Nombre:</label>
