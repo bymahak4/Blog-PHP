@@ -11,21 +11,31 @@ require_once 'models/usuarioModel.php';
 
         public function save() {
             if(isset($_POST)) {
-                $usuario = new Usuario();
-                $usuario->setNombre($_POST['nombre']);
-                $usuario->setApellido($_POST['apellido']);
-                $usuario->setEmail($_POST['email']);
-                $usuario->setPassword($_POST['password']);
-                $save = $usuario->save();
-                if($save) {
-                    $_SESSION['register'] = "Complete";
+                $nombre     = isset($_POST['nombre']) ? trim($_POST['nombre']) : false;
+                $apellido   = isset($_POST['apellido']) ? trim($_POST['apellido']) : false;
+                $email      = isset($_POST['email']) ? trim($_POST['email']) : false;
+                $password   = isset($_POST['password']) ? trim($_POST['password']) : false;
+
+                $validar = Utils::validate($nombre, $apellido, $email, $password);
+                
+                if($validar == false){
+                    $usuario = new Usuario();
+                    $usuario->setNombre($nombre);
+                    $usuario->setApellido($apellido);
+                    $usuario->setEmail($email);
+                    $usuario->setPassword($password);
+                    $save = $usuario->save();
+                    if($save) {
+                        $_SESSION['register'] = "complete";
+                    }else {
+                        $_SESSION['register'] = "failed";
+                    }
                 }else {
-                    $_SESSION['register'] = "Failed";
+                    $_SESSION['register'] = $validar;  
                 }
-                //var_dump($usuario);
             }else {
-                $_SESSION['register'] = "Failed";
-                header("Location:".base_url.'usuario/registro');
+                $_SESSION['register'] = "<strong class='alert_red'>Algo Fallo</strong>";
             }
+            header("Location:".base_url.'usuario/registro');
         }
     }
