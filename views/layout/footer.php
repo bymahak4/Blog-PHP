@@ -1,5 +1,5 @@
     <div class="inner">
-          <p>Todos los derechos reservados <a href="https://getbootstrap.com/">Blog-Practico</a>, by <a href="https://twitter.com/mdo">Diego, Luis</a>.</p>
+          <p>Todos los derechos reservados <a href="https://getbootstrap.com/">Blog-Practico</a>, by Diego, Luis.</p>
         </div>
     </footer>
 

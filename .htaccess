@@ -1,9 +1,11 @@
-<ifModule mod_rewrite.c>
-    RewriteEngine On
-    ErrorDocument 404 http://localhost/bog_php/Blog-PHP/error/
-
-    RewriteCond %(SCRIPT_FILENAME) !-d
-    RewriteCond %(SCRIPT_FILENAME) !-f
-
+<IfModule mod_rewrite.c>
+    # Activar rewrite
+    RewriteEngine on
+    ErrorDocument 404 http://localhost/bog_php/Blog-PHP/error/index
+    
+    RewriteCond %{SCRIPT_FILENAME} !-d
+    RewriteCond %{SCRIPT_FILENAME} !-f
+    
     RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2
-</ifModule>
+</IfModule>
+

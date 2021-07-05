@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
     <link rel="canonical"   href="https://getbootstrap.com/docs/4.3/examples/album/">
-    <link rel="stylesheet"  href="<?=base_url?>css/bootstrap.min.css">
-    <link rel="stylesheet"  href="<?=base_url?>css/main.css">
+    <link rel="stylesheet"  href="<?=base_url?>css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet"  href="<?=base_url?>css/main.css" type="text/css">
 </head>
 <body>
 
