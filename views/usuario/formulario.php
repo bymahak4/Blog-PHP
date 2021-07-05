@@ -1,17 +1,23 @@
 <h1>Formulario</h1>
 
-<form action="index.php?controller=usuario&action=save" method="POST">
+<?php if(isset($_SESSION['register']) && $_SESSION['register']): ?>
+    <strong>Registro Completado Correctamente</strong>
+<?php else: ?>
+    <strong>Regsitro Fallido</strong>
+<?php endif; ?>
+
+<form action="<?=base_url?>usuario/save" method="POST">
     <label for="nombre">Nombre:</label>
-    <input type="text" name="nombre" require/><br>
+    <input type="text" name="nombre" require maxlength="20"/><br>
 
     <label for="apellido">Apellido:</label>
-    <input type="text" name="apellido" require/><br>
+    <input type="text" name="apellido" require maxlength="20"/><br>
 
     <label for="email">Email:</label>
-    <input type="email" name="email" require/><br>
+    <input type="email" name="email" require maxlength="50"/><br>
 
     <label for="contraceña">Contraceña</label>
-    <input type="password" name="password" require/><br>
+    <input type="password" name="password" require maxlength="255"/><br>
 
     <input type="submit" value="Registrarse"/>
 </form>
