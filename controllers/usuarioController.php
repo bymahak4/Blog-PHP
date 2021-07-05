@@ -38,4 +38,20 @@ require_once 'models/usuarioModel.php';
             }
             header("Location:".base_url.'usuario/registro');
         }
+
+        public function logeo() {
+            require_once 'views/usuario/login.php';
+        }
+
+        public function login() {
+            if(isset($_POST)) {
+                $usuario = new Usuario();
+                $usuario->setEmail($_POST['email']);
+                $usuario->getPassword($_POST['password']);
+                
+                $identity = $usuario->login();
+                var_dump($identity);
+            }
+            //header("Location:".base_url);
+        }
     }

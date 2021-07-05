@@ -25,7 +25,7 @@
             return $this->email;
         }
         function getPassword() {
-            return $this->password;
+            return $this->password = password_hash($this->db->real_escape_string($this->password),PASSWORD_BCRYPT, ['cost' => 4]);
         }
 
         function setID($id) {
@@ -41,7 +41,8 @@
             $this->email = $this->db->real_escape_string($email);
         }
         function setPassword($password) {
-            $this->password = password_hash($this->db->real_escape_string($password),PASSWORD_BCRYPT, ['cost' => 4]);
+            $this->password = $password;
+           // 
         }
 
         public function save() {
@@ -56,5 +57,22 @@
             return $result;
         }
     
-    
+        public function login() {
+            $result = false;
+            $email = $this->email;
+            $password = $this->password;
+
+            $sql = "SELECT * FROM usuario WHERE emailUser = '$email'";
+            $login = $this->db->query($sql);
+            //$por_que_mierda_cambian_los_nombres = mysqli_num_rows($login);
+            if($login && $login->num_rows == 1) {
+                $usuario = $login->fetch_object();
+                $verify = password_verify($password, $usuario->password);
+                if($verify) {
+                    $result = true;
+                }
+                
+            }
+            return $result;
+        }
     }

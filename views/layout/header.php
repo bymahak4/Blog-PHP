@@ -27,8 +27,8 @@
             <li class="dropdown ml-3" id="dropdownUser" style="list-style:none;float:right;">
                 <button id="menuUser" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true">Invitado</button>
                 <ul id="profileMenu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" id="register" href="views/formulario.php">Registrate</a>
-                  <a class="dropdown-item" id="login" href="views/login.php">Logearte</a>
+                  <a class="dropdown-item" id="register" href="<?=base_url?>usuario/registro">Registrate</a>
+                  <a class="dropdown-item" id="login" href="<?=base_url?>usuario/logeo">Logearte</a>
                   <a class="dropdown-item" id="profileData" href="views/myProfile.php">Mi Datos</a>
                   <a class="dropdown-item" id="logoutLink" href="views/logout.html" style="color:red">Cerrar sesión</a>
                 </ul>
