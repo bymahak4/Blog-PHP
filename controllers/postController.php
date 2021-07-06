@@ -3,5 +3,5 @@
         public function index(){
             echo "Controlador post index";
         }
-     
+    
     }

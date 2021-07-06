@@ -59,6 +59,13 @@ require_once 'models/usuarioModel.php';
                 }
                 
             }
-            //header("Location:".base_url);
+            header("Location:".base_url);
+        }
+
+        public function logout() {
+            if(isset($_SESSION['identity'])) {
+                unset($_SESSION['identity']);
+            }
+            header("Location:".base_url);
         }
     }
