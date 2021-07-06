@@ -47,10 +47,17 @@ require_once 'models/usuarioModel.php';
             if(isset($_POST)) {
                 $usuario = new Usuario();
                 $usuario->setEmail($_POST['email']);
-                $usuario->getPassword($_POST['password']);
+                $usuario->setPassword($_POST['password']);
                 
                 $identity = $usuario->login();
-                var_dump($identity);
+                
+                
+                if($identity && is_object($identity)){
+                    $_SESSION['identity'] = $identity;
+                }else {
+                    $_SESSION['error_login'] = "No encontrado chabon";
+                }
+                
             }
             //header("Location:".base_url);
         }

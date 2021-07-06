@@ -64,14 +64,15 @@
 
             $sql = "SELECT * FROM usuario WHERE emailUser = '$email'";
             $login = $this->db->query($sql);
-            //$por_que_mierda_cambian_los_nombres = mysqli_num_rows($login);
+            
             if($login && $login->num_rows == 1) {
                 $usuario = $login->fetch_object();
-                $verify = password_verify($password, $usuario->password);
-                if($verify) {
-                    $result = true;
-                }
                 
+                $verify = password_verify($password, $usuario->pasUser);
+                
+                if($verify) {
+                    $result = $usuario;
+                } 
             }
             return $result;
         }
