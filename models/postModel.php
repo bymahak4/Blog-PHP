@@ -63,34 +63,20 @@
     
 
         public function getAll() {
-            $post = $this->db->query("SELECT u.nomUser, p.titPost, p.contPost, fechPost, horaPost 
+            $post = $this->db->query("SELECT u.nomUser, p.titPost, p.contPost, p.fechPost, p.horaPost
             FROM usuario u
             INNER JOIN post p
-            INNER JOIN realiza r
-            ON (u.idUser = r.idUser) AND (u.emailUser = r.emailUser) AND (p.idPost = r.idPost);");
+            ON (u.idUser = p.idUser) AND (u.emailUser = p.emailUser);");
             return $post;
         }
 
         public function save() {
-            $sql = "INSERT INTO `post`(`idPost`, `titPost`, `contPost`, `fechPost`, `horaPost`) 
-            VALUES (null,'{$this->getTitulo()}','{$this->getContenido()}','{$this->getFecha()}','{$this->getHora()}');";
+            $sql = "INSERT INTO `post`(`idPost`, `titPost`, `contPost`, `fechPost`, `horaPost`, `idUser`, `emailUser`) 
+            VALUES (null,'{$this->getTitulo()}','{$this->getContenido()}','{$this->getFecha()}','{$this->getHora()}','{$this->getIdUsuario()}','{$this->getEmailUsuario()}');";
             $save = $this->db->query($sql);
-            
-            $sql2 = "SELECT LAST_INSERT_ID() as 'post';";
-            $query = $this->db->query($sql2);
-            $post_id = $query->fetch_object()->post;
-            echo $sql2;
-            die();
-            
-            foreach($_SESSION['identity'] as $elemento) {
-                $sql3 = "INSERT INTO `realiza`(`idPost`, `idUser`, `emailUser`) 
-                VALUES ('LAST_INSERT_ID()','{$this->getIdUsuario()}','{$this->getEmailUsuario()}');";
-                $save2 = $this->db->query($sql3);
-            }
-                
-        
+           
             $result = false;
-            if($save && $save2) {
+            if($save) {
                 $result = true;
             }
             return $result;
@@ -98,11 +84,10 @@
         }
 
         public function getMyPost() {
-            $mypost = $this->db->query("SELECT u.nomUser, p.titPost, p.contPost, fechPost, horaPost 
+            $mypost = $this->db->query("SELECT u.nomUser, p.titPost, p.contPost, p.fechPost, p.horaPost 
             FROM usuario u
             INNER JOIN post p
-            INNER JOIN realiza r
-            ON (u.idUser = r.idUser) AND (u.emailUser = r.emailUser) AND (p.idPost = r.idPost)
+            ON (u.idUser = p.idUser) AND (u.emailUser = p.emailUser)
             WHERE u.idUser = {$this->getIdUsuario()};");
             return $mypost;
         }
