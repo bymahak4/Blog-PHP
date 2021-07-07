@@ -231,8 +231,8 @@ button, .button{
 }
 
 .button{
-    background: #33AE3D;
-    color: white !important;
+    background: #121212;
+    color: #DB8C47 !important;
     text-decoration: none;
 }
 
@@ -416,4 +416,24 @@ button{
     float: left;
     padding:2px;
     margin: 7px;
+}
+
+
+
+
+
+/* ----------------------------------------------------------------*/
+.blog-post {
+    margin: 20px;
+}
+.blog-post-title {
+    font-size: 30px;
+}
+.blog-post-meta {
+    margin-top: 10px;
+    border-bottom: solid 1px grey;
+}
+.conetenido-post {
+    margin-top: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }

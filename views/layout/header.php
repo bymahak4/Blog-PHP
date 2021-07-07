@@ -25,7 +25,7 @@
 						<a href="<?=base_url?>">Inicio</a>
 					</li>
           <li>
-						<a href="">Prueba</a>
+						<a href="<?=base_url?>post/index">Todos los Posts</a>
 					</li>
 				</ul>
 			</nav>
