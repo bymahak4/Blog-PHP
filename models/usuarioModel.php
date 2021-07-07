@@ -1,5 +1,4 @@
 <?php
-
     class Usuario {
         private $id;
         private $nombre;
@@ -42,7 +41,6 @@
         }
         function setPassword($password) {
             $this->password = $password;
-           // 
         }
 
         public function save() {
@@ -75,14 +73,14 @@
                 } 
             }
             return $result;
+            
         }
 
-        public function edit() {
-            $sql = "UPDATE usuario SET nomUser='{$this->getNombre()}', apeUser='{$this->getApellido()}' ";
-            $sql .= "WHERE idUser={$this->getID()}";
-            
+        public function update() {
+            $sql = "UPDATE usuario SET nomUser='{$this->getNombre()}', apeUser='{$this->getApellido()}' 
+            WHERE idUser = {$this->getID()}";
             $save = $this->db->query($sql);
-
+            
             $result = false;
             if($save) {
                 $result = true;

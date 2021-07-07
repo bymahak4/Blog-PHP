@@ -1,17 +1,25 @@
 <h1>Mis Datos</h1>
 
+<form action="<?=base_url?>usuario/update" method="POST">
 
-<form action="<?=base_url?>usuario/edit" method="POST">
-
+<?php if(isset($_SESSION['update']) && $_SESSION['update'] == 'complete'): ?>
+    <strong class="alert_green">Registro Completado Correctamente</strong><br>
+<?php elseif(isset($_SESSION['update']) && $_SESSION['update'] != 'complete'): 
+    $error = $_SESSION['update'];
+    echo $error;
+    endif; 
+?>
 
     <label for="nombre">Nombre:</label>
-    <input type="text" name="nombre" maxlength="20"/><br>
+    <input type="text" name="nombre" placeholder="<?=$_SESSION['identity']->nomUser;?>" maxlength="20"/><br>
 
     <label for="apellido">Apellido:</label>
-    <input type="text" name="apellido" maxlength="20"/><br>
+    <input type="text" name="apellido" placeholder="<?=$_SESSION['identity']->apeUser;?>" maxlength="20"/><br>
 
     <label for="email">Email:</label>
-    <input type="email" name="email" maxlength="50"/><br>
-
+    <input type="text" name="email" placeholder="<?=$_SESSION['identity']->emailUser;?>" maxlength="20" readonly/><br>
+    
     <input type="submit" value="Actualizar"/>
+
 </form>
+<?php Utils::deleteSession('update'); ?>

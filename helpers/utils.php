@@ -60,4 +60,37 @@
             }
             return $error;
         }
+
+        public static function validateUpdate($nombre, $apellido) {
+            $error = true;
+
+            if(empty($nombre)) {
+                $error = "<strong class='alert_red'>Por favor introduzca su Nombre</strong><br>";
+                return $error;
+            }elseif(is_numeric($nombre) && preg_match("/[0-9]/", $nombre)){
+                $error = "<strong class='alert_red'>Por favor introduzca un Nombre valido</strong><br>";
+                return $error;
+            }else{
+                $error = false; 
+            }
+     
+            if(empty($apellido)){
+                $error = "<strong class='alert_red'>Por favor introduzca su Apellido</strong><br>";
+                return $error;
+            }elseif(is_numeric($apellido) && preg_match("/[0-9]/", $apellido)){
+                $error = "<strong class='alert_red'>Por favor introduzca un Apellido valido</strong><br>";
+                return $error;
+            }else{
+                $error = false; 
+            }
+            return $error;
+        }
+
+        public static function isLogin() {
+            if(!isset($_SESSION['identity'])) {
+                header("Location:".base_url);
+            }else {
+                return true;
+            }
+        }
     }

@@ -1,9 +1,6 @@
 <?php
 require_once 'models/usuarioModel.php';
     class usuarioController{
-        public function index(){
-            echo "Controlador Usuario index";
-        }
         
         public function registro(){
             require_once 'views/usuario/formulario.php';
@@ -24,15 +21,8 @@ require_once 'models/usuarioModel.php';
                     $usuario->setApellido($apellido);
                     $usuario->setEmail($email);
                     $usuario->setPassword($password);
-                    
-                    
-                    if($_SESSION['register']="complete") {
-                        $save = $usuario->edit();
-                    }else {
-                        $save = $usuario->save();
-                    }
-                    
-                    
+                    $save = $usuario->save();
+                                      
                     if($save) {
                         $_SESSION['register'] = "complete";
                     }else {
@@ -67,7 +57,7 @@ require_once 'models/usuarioModel.php';
                 }
                 
             }
-            header("Location:".base_url);
+            header("Location:".base_url."usuario/actualizar");
         }
 
         public function logout() {
@@ -80,8 +70,30 @@ require_once 'models/usuarioModel.php';
         public function actualizar() {
             require_once 'views/usuario/Myprofile.php';
         }
-
         public function update() {
-            
+            if(isset($_POST)) {
+                $nombre     = isset($_POST['nombre']) ? trim($_POST['nombre']) : false;
+                $apellido   = isset($_POST['apellido']) ? trim($_POST['apellido']) : false;
+                $validar = Utils::validateUpdate($nombre, $apellido);
+                
+                if($validar == false){
+                    $usuario = new Usuario();
+                    $usuario->setNombre($nombre);
+                    $usuario->setApellido($apellido);
+                    $usuario->setID($_SESSION['identity']->idUser);
+                    $update = $usuario->update();
+                    
+                    if($update) {
+                        $_SESSION['update'] = "complete";
+                    }else {
+                        $_SESSION['update'] = "failed";
+                    }
+                }else {
+                    $_SESSION['update'] = $validar; 
+                }
+            }else {
+                $_SESSION['update'] = "<strong class='alert_red'>Algo Fallo</strong>";
+            }
+            header("Location:".base_url."usuario/actualizar");
         }
     }
