@@ -24,7 +24,15 @@ require_once 'models/usuarioModel.php';
                     $usuario->setApellido($apellido);
                     $usuario->setEmail($email);
                     $usuario->setPassword($password);
-                    $save = $usuario->save();
+                    
+                    
+                    if($_SESSION['register']="complete") {
+                        $save = $usuario->edit();
+                    }else {
+                        $save = $usuario->save();
+                    }
+                    
+                    
                     if($save) {
                         $_SESSION['register'] = "complete";
                     }else {
@@ -67,5 +75,13 @@ require_once 'models/usuarioModel.php';
                 unset($_SESSION['identity']);
             }
             header("Location:".base_url);
+        }
+
+        public function actualizar() {
+            require_once 'views/usuario/Myprofile.php';
+        }
+
+        public function update() {
+            
         }
     }

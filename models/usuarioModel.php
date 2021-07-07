@@ -76,4 +76,17 @@
             }
             return $result;
         }
+
+        public function edit() {
+            $sql = "UPDATE usuario SET nomUser='{$this->getNombre()}', apeUser='{$this->getApellido()}' ";
+            $sql .= "WHERE idUser={$this->getID()}";
+            
+            $save = $this->db->query($sql);
+
+            $result = false;
+            if($save) {
+                $result = true;
+            }
+            return $result;
+        }
     }

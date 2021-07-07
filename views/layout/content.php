@@ -19,12 +19,13 @@
 		<ul>
         <?php if(isset($_SESSION['identity'])) : ?>
           <li><a href="<?=base_url?>post/index">Mostrar mis Post</a></li>
-          <li><a href="<?=base_url?>usuario/data">Mis Datos</a></li>
+          <li><a href="<?=base_url?>usuario/actualizar">Mis Datos</a></li>
           <li><a href="<?=base_url?>usuario/logout">Cerrar sesión</a></li>
-        <?php endif; ?>
         
-			  <li><a href="<?=base_url?>usuario/registro">Registrate aqui</a></li>
-		</ul>
+        <?php else: ?>
+			    <li><a href="<?=base_url?>usuario/registro">Registrate aqui</a></li>
+        <?php endif; ?>
+    </ul>
 	</div>
 
 </aside>

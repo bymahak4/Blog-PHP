@@ -8,6 +8,7 @@
             }
             return $name;   
         }
+        
         public static function validate($nombre, $apellido, $email, $password) {
             $error = true;
 
@@ -22,7 +23,7 @@
             }
      
             if(empty($apellido)){
-                $error = "<strong>Por favor introduzca su Email</strong><br>";
+                $error = "<strong class='alert_red'>Por favor introduzca su Apellido</strong><br>";
                 return $error;
             }elseif(is_numeric($apellido) && preg_match("/[0-9]/", $apellido)){
                 $error = "<strong class='alert_red'>Por favor introduzca un Apellido valido</strong><br>";
