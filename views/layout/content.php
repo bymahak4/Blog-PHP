@@ -18,7 +18,7 @@
 
 		<ul>
         <?php if(isset($_SESSION['identity'])) : ?>
-          <li><a href="<?=base_url?>post/index">Mostrar mis Post</a></li>
+          <li><a href="<?=base_url?>post/myPosts">Mostrar mis Post</a></li>
           <li><a href="<?=base_url?>usuario/actualizar">Mis Datos</a></li>
           <li><a href="<?=base_url?>usuario/logout">Cerrar sesión</a></li>
         

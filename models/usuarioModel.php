@@ -73,7 +73,6 @@
                 } 
             }
             return $result;
-            
         }
 
         public function update() {

@@ -1,6 +1,8 @@
-<h1>Todos los Post de Usuarios</h1>
+<h1>Mis Post</h1>
 
-<?php while($posteo = $posts->fetch_object()) : ?>
+<a class="button button-small" href="<?=base_url?>post/crear">Crear Post</a>
+
+<?php while($posteo = $myposts->fetch_object()) : ?>
 <div class="blog-post">
     <h2 class="blog-post-title"><?=$posteo->titPost;?></h2>
     <p class="blog-post-meta"><?=$posteo->fechPost;?>, <?=$posteo->horaPost;?> by <b><?=$posteo->nomUser;?></b></p>

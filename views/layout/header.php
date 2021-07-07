@@ -22,7 +22,7 @@
 			<nav id="menu">
 				<ul>
 					<li>
-						<a href="<?=base_url?>">Inicio</a>
+						<a href="<?=base_url?>post/index">Inicio</a>
 					</li>
          			 <li>
 						<a href="<?=base_url?>post/index">Todos los Posts</a>

@@ -49,7 +49,6 @@ require_once 'models/usuarioModel.php';
                 
                 $identity = $usuario->login();
                 
-                
                 if($identity && is_object($identity)){
                     $_SESSION['identity'] = $identity;
                 }else {
@@ -68,8 +67,10 @@ require_once 'models/usuarioModel.php';
         }
 
         public function actualizar() {
+            Utils::isLogin();
             require_once 'views/usuario/Myprofile.php';
         }
+        
         public function update() {
             if(isset($_POST)) {
                 $nombre     = isset($_POST['nombre']) ? trim($_POST['nombre']) : false;

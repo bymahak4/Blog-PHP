@@ -76,10 +76,19 @@
             VALUES (null,'{$this->getTitulo()}','{$this->getContenido()}','{$this->getFecha()}','{$this->getHora()}');";
             $save = $this->db->query($sql);
             
-            $sql2 = "INSERT INTO `realiza`(`idPost`, `idUser`, `emailUser`) 
-            VALUES ('{$this->getId()}','{$this->getIdUsuario()}','{$this->getEmailUsuario()}');";
-            $save2 = $this->db->query($sql2);
+            $sql2 = "SELECT LAST_INSERT_ID() as 'post';";
+            $query = $this->db->query($sql2);
+            $post_id = $query->fetch_object()->post;
+            echo $sql2;
+            die();
             
+            foreach($_SESSION['identity'] as $elemento) {
+                $sql3 = "INSERT INTO `realiza`(`idPost`, `idUser`, `emailUser`) 
+                VALUES ('LAST_INSERT_ID()','{$this->getIdUsuario()}','{$this->getEmailUsuario()}');";
+                $save2 = $this->db->query($sql3);
+            }
+                
+        
             $result = false;
             if($save && $save2) {
                 $result = true;
@@ -88,5 +97,14 @@
             
         }
 
+        public function getMyPost() {
+            $mypost = $this->db->query("SELECT u.nomUser, p.titPost, p.contPost, fechPost, horaPost 
+            FROM usuario u
+            INNER JOIN post p
+            INNER JOIN realiza r
+            ON (u.idUser = r.idUser) AND (u.emailUser = r.emailUser) AND (p.idPost = r.idPost)
+            WHERE u.idUser = {$this->getIdUsuario()};");
+            return $mypost;
+        }
         
     }
