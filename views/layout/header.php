@@ -25,7 +25,7 @@
 						<a href="<?=base_url?>post/index">Inicio</a>
 					</li>
          			 <li>
-						<a href="<?=base_url?>post/index">Todos los Posts</a>
+						<a href="<?=base_url?>post/paginate.php">Todos los Posts</a>
 					</li>
 				</ul>
 			</nav>

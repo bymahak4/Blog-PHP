@@ -86,6 +86,36 @@
             return $error;
         }
 
+        public static function validatePost($titulo, $contenido, $fecha, $hora) {
+            $error = true;
+
+            if(empty($titulo)) {
+                $error = "<strong class='alert_red'>Por favor introduzca un Titulo</strong><br>";
+                return $error;
+            }else{
+                $error = false; 
+            }
+            if(empty($contenido)) {
+                $error = "<strong class='alert_red'>Por favor introduzca un Contenido</strong><br>";
+                return $error;
+            }else{
+                $error = false; 
+            }
+            if(empty($fecha)) {
+                $error = "<strong class='alert_red'>Por favor introduzca una Fecha</strong><br>";
+                return $error;
+            }else{
+                $error = false; 
+            }
+            if(empty($hora)) {
+                $error = "<strong class='alert_red'>Por favor introduzca una Hora</strong><br>";
+                return $error;
+            }else{
+                $error = false; 
+            }
+            return $error;
+        }
+
         public static function isLogin() {
             if(!isset($_SESSION['identity'])) {
                 header("Location:".base_url);

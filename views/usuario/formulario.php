@@ -8,9 +8,9 @@
 <?php elseif(isset($_SESSION['register']) && $_SESSION['register'] != 'complete'): 
     $error = $_SESSION['register'];
     echo $error;
-    endif; 
+    endif;
 ?>
-
+    
     <label for="nombre">Nombre:</label>
     <input type="text" name="nombre" maxlength="20"/><br>
 

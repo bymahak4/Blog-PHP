@@ -3,6 +3,7 @@
 <?php while($mostrar = $myposts->fetch_object()) : ?>
 <form action="<?=base_url?>post/update&id=<?=$mostrar->idPost;?>" method="POST">
 
+
     <label for="titulo">Titulo</label>
     <input type="text" name="titulo" placeholder="<?=$mostrar->titPost;?>" required>
 

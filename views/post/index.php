@@ -1,3 +1,9 @@
+<?php
+    require_once 'controllers/paginationController.php';
+    
+    $pc = new PaginationController();
+    
+?>
 <h1>Todos los Post de Usuarios</h1>
 
 <?php while($posteo = $posts->fetch_object()) : ?>
@@ -8,3 +14,14 @@
     <hr>
 </div>
 <?php endwhile; ?>
+
+<div>
+    <?php $pages = $pc->Paginate("post", 3);
+     for ($i=1; $i<=$pages; $i++) {
+         ?>
+         <a href=""><?php echo $i; ?></a>
+         <?php
+     }   
+        
+    ?>
+</div>

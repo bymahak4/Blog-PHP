@@ -3,7 +3,7 @@
 <form action="<?=base_url?>usuario/update" method="POST">
 
 <?php if(isset($_SESSION['update']) && $_SESSION['update'] == 'complete'): ?>
-    <strong class="alert_green">Registro Completado Correctamente</strong><br>
+    <strong class="alert_green">Registro Actualizado Correctamente</strong><br>
 <?php elseif(isset($_SESSION['update']) && $_SESSION['update'] != 'complete'): 
     $error = $_SESSION['update'];
     echo $error;
