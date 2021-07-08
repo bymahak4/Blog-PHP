@@ -52,7 +52,7 @@ $db = new mysqli("localhost", "root", "", "blogdb");
 
 ## Autores ✒️
 
-* **Diego Rodriguez** - [Mahaka](https://https://github.com/bymahak4)
+* **Diego Rodriguez** - [Mahaka](https://github.com/bymahak4)
 
 
 ---
