@@ -4,7 +4,7 @@ _Blog hecho en mvc con php y msql._
 
 ## Información 🚀
 
-_La base de datos fue hecha con phpMyAdmin usando xampp._
+_La base de datos fue hecha usando la herramienta phpMyAdmin usando xampp._
 
 
 ### Sentencia de creación de Base De Datos 📋
@@ -13,7 +13,6 @@ _Nombre de la base de datos "blogdb" y el nombre de las tablas "usuario" y "post
 
 ```
 CREATE DATABASE blogdb;
-Use DATABASE blogdb;
 
 CREATE TABLE usuario
 ( idUser int(5) NOT NULL AUTO_INCREMENT,
@@ -36,7 +35,7 @@ CREATE TABLE post
 );
 ```
 
-### Rutas 🔧
+### Configuración 🔧
 
 _Configurar dentro de la carpeta: "config/parameters.php" para poner su ruta por defecto._
 
@@ -45,6 +44,11 @@ define("base_url", "http://localhost/bog_php/Blog-PHP/")
 ```
 
 _Configurar dentro de la carpeta: "config/db.php" por si quiere cambiar la configuracion de la base de datos._
+
+```
+$db = new mysqli("localhost", "root", "", "blogdb");
+```
+
 
 ## Autores ✒️
 
