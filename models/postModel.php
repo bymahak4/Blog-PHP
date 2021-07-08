@@ -103,4 +103,24 @@
             return $result;
         }
         
+        public function getOneMyPost(){
+            $sql = "SELECT * FROM post WHERE idPost = {$this->id}";
+            $save = $this->db->query($sql);
+            return $save;
+            
+        }
+
+        public function edits() {
+           $sql = "UPDATE post 
+           SET titPost='{$this->getTitulo()}', contPost='{$this->getContenido()}', 
+           fechPost='{$this->getFecha()}', horaPost='{$this->getHora()}'
+           WHERE idPost = {$this->getId()};";
+           $actualizar = $this->db->query($sql);
+           
+           $result = false;
+           if($actualizar) {
+               $result = true;
+           }
+           return $result;
+        }
     }

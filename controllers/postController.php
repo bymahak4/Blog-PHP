@@ -32,19 +32,45 @@
                 $post->setHora($_POST['hora']);
                 $post->setIdUsuario($_SESSION['identity']->idUser);
                 $post->setEmailUsuario($_SESSION['identity']->emailUser);
+               
                 $save = $post->save();
+   
             }
-            
             header("Location:".base_url."post/index");
         }
 
         public function edit() {
             Utils::isLogin();
-        
-
+                $mypost = new Post();
+                $mypost->setId($_GET['id']);
+                $myposts = $mypost->getOneMyPost();
+                var_dump($mypost);
             require_once 'views/post/edit.php';
+            
+        }       
+
+        public function update() {
+            if(isset($_SESSION['identity'])){
+                $id = $_GET['id'];
+                $update = new Post();
+                $update->setId($id);
+                $update->setTitulo($_POST['titulo']);
+                $update->setContenido($_POST['contenido']);
+                $update->setFecha($_POST['fecha']);
+                $update->setHora($_POST['hora']);
+                $updates = $update->edits();
+                
+                if($updates){
+                    $_SESSION['updatePost'] = 'complete';
+                }else{
+                    $_SESSION['updatePost'] = 'failed';
+                }
+            }else{
+                $_SESSION['updatePost'] = 'failed';
+            }
+            
+            header('Location:'.base_url.'post/myPosts');   
         }
-        
 
         public function eliminar(){
             Utils::isLogin();
@@ -65,9 +91,7 @@
                 $_SESSION['delete'] = 'failed';
 
 
-            }
-            
-            header('Location:'.base_url.'post/myPosts');
-            
+            }  
+            header('Location:'.base_url.'post/myPosts');   
         }
     }

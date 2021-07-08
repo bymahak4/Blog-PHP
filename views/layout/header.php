@@ -13,7 +13,7 @@
 				<div id="logo">
 					<img src="<?=base_url?>assets/img/blog.png" alt="Blog Logo" />
 					<a href="<?=base_url?>">
-            Blog para Gonzalo De Los rochos
+            Blog Parcial
 					</a>
 				</div>
 			</header>

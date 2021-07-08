@@ -71,8 +71,9 @@ require_once 'models/usuarioModel.php';
             require_once 'views/usuario/Myprofile.php';
         }
 
-        public function updateSession($nombre) {
+        public function updateSession($nombre, $apellido) {
             $_SESSION['identity']->nomUser = $nombre;
+            $_SESSION['identity']->apeUser = $apellido;
         }
 
         public function update() {
@@ -91,7 +92,7 @@ require_once 'models/usuarioModel.php';
                     
                     if($update) {
                         $_SESSION['update'] = "complete";
-                        $this->updateSession($nombre);
+                        $this->updateSession($nombre, $apellido);
                     }else {
                         $_SESSION['update'] = "failed";
                     }
