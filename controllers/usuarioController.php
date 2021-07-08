@@ -70,7 +70,11 @@ require_once 'models/usuarioModel.php';
             Utils::isLogin();
             require_once 'views/usuario/Myprofile.php';
         }
-        
+
+        public function updateSession($nombre) {
+            $_SESSION['identity']->nomUser = $nombre;
+        }
+
         public function update() {
             if(isset($_POST)) {
                 $nombre     = isset($_POST['nombre']) ? trim($_POST['nombre']) : false;
@@ -83,9 +87,10 @@ require_once 'models/usuarioModel.php';
                     $usuario->setApellido($apellido);
                     $usuario->setID($_SESSION['identity']->idUser);
                     $update = $usuario->update();
-                    
+                   
                     if($update) {
                         $_SESSION['update'] = "complete";
+                        $this->updateSession($nombre);
                     }else {
                         $_SESSION['update'] = "failed";
                     }
@@ -97,4 +102,7 @@ require_once 'models/usuarioModel.php';
             }
             header("Location:".base_url."usuario/actualizar");
         }
+
+        
+
     }
