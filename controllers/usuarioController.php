@@ -87,7 +87,8 @@ require_once 'models/usuarioModel.php';
                     $usuario->setApellido($apellido);
                     $usuario->setID($_SESSION['identity']->idUser);
                     $update = $usuario->update();
-                   
+                    
+                    
                     if($update) {
                         $_SESSION['update'] = "complete";
                         $this->updateSession($nombre);
@@ -104,5 +105,5 @@ require_once 'models/usuarioModel.php';
         }
 
         
-
+        
     }

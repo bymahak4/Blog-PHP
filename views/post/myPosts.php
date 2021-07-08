@@ -8,5 +8,11 @@
     <p class="blog-post-meta"><?=$posteo->fechPost;?>, <?=$posteo->horaPost;?> by <b><?=$posteo->nomUser;?></b></p>
     <p class="conetenido-post"><?=$posteo->contPost;?></p>
     <hr>
+    <div class="blog-post-btn">
+        <a class="button button-small btnP" href="<?=base_url?>post/edit">Editar Post</a>
+        <a class="button button-small btnP" 
+        href="<?=base_url?>post/eliminar&id=<?=$posteo->idPost?>">Eliminar Post</a>
+    </div>
+    <hr>
 </div>
 <?php endwhile; ?>

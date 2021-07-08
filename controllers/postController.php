@@ -37,4 +37,37 @@
             
             header("Location:".base_url."post/index");
         }
+
+        public function edit() {
+            Utils::isLogin();
+        
+
+            require_once 'views/post/edit.php';
+        }
+        
+
+        public function eliminar(){
+            Utils::isLogin();
+           
+          
+            if(isset($_GET['id'])){
+                $id = $_GET['id'];
+                $eliminar = new Post();
+                $eliminar->setId($id);
+                $delete = $eliminar->delete();
+               
+                if($delete){
+                    $_SESSION['delete'] = 'complete';
+                }else{
+                    $_SESSION['delete'] = 'failed';
+                }
+            }else{
+                $_SESSION['delete'] = 'failed';
+
+
+            }
+            
+            header('Location:'.base_url.'post/myPosts');
+            
+        }
     }

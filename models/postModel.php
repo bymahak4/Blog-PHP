@@ -84,12 +84,23 @@
         }
 
         public function getMyPost() {
-            $mypost = $this->db->query("SELECT u.nomUser, p.titPost, p.contPost, p.fechPost, p.horaPost 
+            $mypost = $this->db->query("SELECT u.nomUser, p.idPost, p.titPost, p.contPost, p.fechPost, p.horaPost 
             FROM usuario u
             INNER JOIN post p
             ON (u.idUser = p.idUser) AND (u.emailUser = p.emailUser)
             WHERE u.idUser = {$this->getIdUsuario()};");
             return $mypost;
+        }
+
+        public function delete() {
+            $sql = "DELETE FROM `post` WHERE idPost = {$this->id};";
+            $delete = $this->db->query($sql);
+            
+            $result = false;
+            if($delete) {
+                $result = true;
+            }
+            return $result;
         }
         
     }
