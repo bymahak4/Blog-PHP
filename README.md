@@ -20,6 +20,7 @@ CREATE TABLE usuario
   apeUser varchar(20) NOT NULL,
   emailUser varchar(50) NOT NULL,
   pasUser varchar(255) NOT NULL,
+  imgUser varchar(255),
   CONSTRAINT usuario_pk PRIMARY KEY (idUser,emailUser)
 );
 
