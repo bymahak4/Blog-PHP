@@ -25,7 +25,7 @@
         <?php else: ?>
 			    <li><a href="<?=base_url?>usuario/registro">Registrate aqui</a></li>
         <?php endif; ?>
-    </ul>
+    	</ul>
 	</div>
 
 </aside>

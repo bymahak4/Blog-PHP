@@ -5,6 +5,7 @@
         private $apellido;
         private $email;
         private $password;
+        private $imagen;
         private $db;
         
         public function __construct() {
@@ -26,6 +27,9 @@
         function getPassword() {
             return $this->password = password_hash($this->db->real_escape_string($this->password),PASSWORD_BCRYPT, ['cost' => 4]);
         }
+        public function getImagen() {
+            return $this->imagen;
+        }
 
         function setID($id) {
             $this->id = $id;
@@ -42,10 +46,13 @@
         function setPassword($password) {
             $this->password = $password;
         }
+        public function setImagen($imagen) {
+            $this->imagen = $imagen;
+        }
 
         public function save() {
-            $sql = "INSERT INTO `usuario`(`idUser`, `nomUser`, `apeUser`, `emailUser`, `pasUser`) 
-            VALUES (null,'{$this->getNombre()}','{$this->getApellido()}','{$this->getEmail()}','{$this->getPassword()}');";
+            $sql = "INSERT INTO `usuario`(`idUser`, `nomUser`, `apeUser`, `emailUser`, `pasUser`, `imgUser`) 
+            VALUES (null,'{$this->getNombre()}','{$this->getApellido()}','{$this->getEmail()}','{$this->getPassword()}', null);";
             $save = $this->db->query($sql);
 
             $result = false;
@@ -76,7 +83,7 @@
         }
 
         public function update() {
-            $sql = "UPDATE usuario SET nomUser='{$this->getNombre()}', apeUser='{$this->getApellido()}' 
+            $sql = "UPDATE usuario SET nomUser='{$this->getNombre()}', apeUser='{$this->getApellido()}', imgUser='{$this->getImagen()}' 
             WHERE idUser = {$this->getID()}";
             $save = $this->db->query($sql);
             
@@ -86,4 +93,7 @@
             }
             return $result;
         }
+
+        
+        
     }

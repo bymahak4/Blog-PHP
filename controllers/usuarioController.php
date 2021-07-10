@@ -71,9 +71,10 @@ require_once 'models/usuarioModel.php';
             require_once 'views/usuario/Myprofile.php';
         }
 
-        public function updateSession($nombre, $apellido) {
+        public function updateSession($nombre, $apellido, $filename) {
             $_SESSION['identity']->nomUser = $nombre;
             $_SESSION['identity']->apeUser = $apellido;
+            $_SESSION['identity']->imgUser = $filename;
         }
 
         public function update() {
@@ -87,12 +88,24 @@ require_once 'models/usuarioModel.php';
                     $usuario->setNombre($nombre);
                     $usuario->setApellido($apellido);
                     $usuario->setID($_SESSION['identity']->idUser);
-                    $update = $usuario->update();
+                     
+                     $file = $_FILES['imagen'];
+                     $filename = $_FILES['imagen']['name'];
+                     $mimetype = $_FILES['imagen']['type'];
                     
+                     if($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "image/png") {
+                         if(!is_dir('uploads/images')) {
+                             mkdir('uploads/images', 0777, true);
+                         }
+                         move_uploaded_file($file['tmp_name'], 'uploads/images/'.$filename);
+                         $usuario->setImagen($filename);
+                     }
+
+                    $update = $usuario->update();
                     
                     if($update) {
                         $_SESSION['update'] = "complete";
-                        $this->updateSession($nombre, $apellido);
+                        $this->updateSession($nombre, $apellido, $filename);
                     }else {
                         $_SESSION['update'] = "failed";
                     }

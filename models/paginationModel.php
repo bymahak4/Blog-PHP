@@ -9,9 +9,8 @@
         public function Paginate($table) {
             try {
                 $sql = "SELECT count(*) as total FROM ". $table;
-                $save = $this->db->prepare($sql);
-                $save->execute();
-                $rows = $save->fetch();
+                $save = $this->db->query($sql);
+                $rows = $save->fetch_array();
                 return $rows;
             } catch (PDOException $error) {
                 echo $error->getMessage();

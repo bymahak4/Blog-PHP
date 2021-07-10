@@ -301,6 +301,17 @@ button{
 .btnP {
     margin: 20px;
 }
+#divimg {
+    width: 50% !important;
+}
+
+#avatar {
+    width: 250px;
+    height: 250px;
+    border-radius: 50% 50% 50% 50%;
+    margin-left: 50%;
+}
+
 /*FOOTER*/
 #footer{
     clear: both;

@@ -15,13 +15,13 @@
 </div>
 <?php endwhile; ?>
 
-<div>
-    <?php $pages = $pc->Paginate("post", 3);
+<!--<div>
+    </*?php $pages = $pc->Paginate("post", 3);
      for ($i=1; $i<=$pages; $i++) {
          ?>
-         <a href=""><?php echo $i; ?></a>
-         <?php
+         <a href=""></*?php echo $i; ?></a>
+         </*?php
      }   
         
     ?>
-</div>
+</div> -->

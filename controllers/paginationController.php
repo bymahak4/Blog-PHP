@@ -11,7 +11,7 @@ require_once 'models/paginationModel.php';
             $rows = $this->pm->Paginate($table);
             //var_dump($rows);
             //die();
-            $pages = $size / $rows;
+            $pages = $size/$rows;
             //var_dump($pages);
             //die();
             return $pages;
