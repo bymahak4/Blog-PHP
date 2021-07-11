@@ -1,4 +1,18 @@
 <?php 
+$meses = [
+    'Enero'         => '1',
+    'Febrero'       => '2',
+    'Marzo'         => '3',
+    'Abril'         => '4',
+    'Mayo'          => '5',
+    'Junio'         => '6',
+    'Julio'         => '7',
+    'Agosto'        => '8',
+    'Septiembre'    => '9',
+    'Octubre'       => '10',
+    'Noviembre'     => '11',
+    'Diciembre'     => '12',
+];
 
     class post {
         public $id;
@@ -8,6 +22,8 @@
         public $hora;
         public $idUsuario;
         public $emailUsuario;
+        public $mes;
+        public $year;
         private $db;
         
         public function __construct() {
@@ -35,6 +51,12 @@
         public function getEmailUsuario() {
             return $this->emailUsuario;
         }
+        public function getMes() {
+            return $this->mes;
+        }
+        public function getYear() {
+            return $this->year;
+        }
         
         public function setId($id) {
             $this->id = $id;      
@@ -57,8 +79,12 @@
         public function setEmailUsuario($emailUsuario) {
             $this->emailUsuario = $emailUsuario;
         }
-
-        
+        public function setMes($mes) {
+            $this->mes = $mes;
+        }
+        public function setYear($year) {
+            $this->year = $year;
+        }
 
     
 
@@ -124,5 +150,32 @@
            return $result;
         }
 
+        public function listMesPost() {
+            $sql = "SELECT MONTH(fechPost) as meses, YEAR(fechPost) as ano FROM post GROUP BY meses, ano;";
+            $save = $this->db->query($sql);
+            $result = $save->fetch_all();
+            return $result;
+        }
 
+        public function listar() {
+            $sql = "SELECT u.nomUser, p.titPost, p.contPost, p.fechPost, p.horaPost 
+            FROM usuario u
+            INNER JOIN post p
+            ON (u.idUser = p.idUser) AND (u.emailUser = p.emailUser)
+            WHERE MONTH(fechPost) ={$this->getMes()} AND YEAR(fechPost)={$this->getYear()};";
+            $save = $this->db->query($sql);
+
+            return $save;
+        }
+
+
+        
+        
+
+        
+     
+       
+
+       
+        
     }

@@ -94,7 +94,6 @@
         public function eliminar(){
             Utils::isLogin();
            
-          
             if(isset($_GET['id'])){
                 $id = $_GET['id'];
                 $eliminar = new Post();
@@ -113,6 +112,29 @@
             }  
             header('Location:'.base_url.'post/myPosts');   
         }
+
+       public function listar() {
+        Utils::isLogin();
+        if (is_numeric($_GET['mes']) AND is_numeric($_GET['year'])) {
+            $meses = $_GET['mes'];
+            $year = $_GET['year'];
+            $listar = new post();
+            $listar->setMes($meses);
+            $listar->setYear($year);
+        
+            $resList = $listar->listar();
+        
+            if($resList){
+                $_SESSION['listar'] = 'complete';
+            }else{
+                $_SESSION['listar'] = 'failed';
+            }
+        }else{
+        header('Location:'.base_url.'post/index'); 
+        }
+
+        require_once 'views/post/listar.php';
+       }
 
        
     }

@@ -1,3 +1,8 @@
+<?php
+    require_once 'controllers/postController.php';
+
+    $pl = new post();
+?>   
 <!-- BARRA LATERAL -->
 <aside id="lateral">
 	
@@ -26,8 +31,21 @@
 			    <li><a href="<?=base_url?>usuario/registro">Registrate aqui</a></li>
         <?php endif; ?>
     	</ul>
+		
+		<?php if(isset($_SESSION['identity'])) : ?>
+    	<ul>
+        	<h3>Archivos de Posts</h3>
+		<?php
+            $pls = $pl->listMesPost();
+			//$pl = $pl->fetch_all();
+			//var_dump($listar);
+			foreach ($pls as $pls2) { ?>
+			<li><a href="<?=base_url?>post/listar&mes=<?=$pls2[0]?>&year=<?=$pls2[1]?>">Mes:<?=$pls2[0]?> / Año:<?=$pls2[1]?></a></li>		
+		<?php } ?>
+    	</ul>
+		<?php endif; ?>
 	</div>
-
+			
 </aside>
 
 <!-- CONTENIDO CENTRAL -->
