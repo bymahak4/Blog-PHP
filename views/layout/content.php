@@ -1,7 +1,21 @@
 <?php
     require_once 'controllers/postController.php';
-
+	$meses = [
+		'Enero'         => '1',
+		'Febrero'       => '2',
+		'Marzo'         => '3',
+		'Abril'         => '4',
+		'Mayo'          => '5',
+		'Junio'         => '6',
+		'Julio'         => '7',
+		'Agosto'        => '8',
+		'Septiembre'    => '9',
+		'Octubre'       => '10',
+		'Noviembre'     => '11',
+		'Diciembre'     => '12',
+	];
     $pl = new post();
+
 ?>   
 <!-- BARRA LATERAL -->
 <aside id="lateral">
@@ -32,13 +46,12 @@
         <?php endif; ?>
     	</ul>
 		
-		<?php if(isset($_SESSION['identity'])) : ?>
+		<?php //var_dump($meses) ;
+		if(isset($_SESSION['identity'])) : ?>
     	<ul>
         	<h3>Archivos de Posts</h3>
 		<?php
             $pls = $pl->listMesPost();
-			//$pl = $pl->fetch_all();
-			//var_dump($listar);
 			foreach ($pls as $pls2) { ?>
 			<li><a href="<?=base_url?>post/listar&mes=<?=$pls2[0]?>&year=<?=$pls2[1]?>">Mes:<?=$pls2[0]?> / Año:<?=$pls2[1]?></a></li>		
 		<?php } ?>

@@ -8,13 +8,8 @@ require_once 'models/paginationModel.php';
             $this->pm = new PaginationModel();
         }
         public function Paginate($table, $size) {
-            $rows = $this->pm->Paginate($table);
-            //var_dump($rows);
-            //die();
-            $pages = $size/$rows;
-            //var_dump($pages);
-            //die();
-            return $pages;
-            //echo $pc->Paginate("post","1");
+            $rows = $this->pm->Paginate($table); 
+            $pages = $rows[0]/$size;
+            return $pages; 
         }
     }

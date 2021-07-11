@@ -1,7 +1,7 @@
 <h1>Mis Post</h1>
 
 <a class="button button-small" href="<?=base_url?>post/crear">Crear Post</a>
-
+<hr>
 <?php while($posteo = $myposts->fetch_object()) : ?>
 <div class="blog-post">
     <h2 class="blog-post-title"><?=$posteo->titPost;?></h2>
@@ -12,6 +12,6 @@
         <a class="button button-small btnP" href="<?=base_url?>post/edit&id=<?=$posteo->idPost?>">Editar Post</a>
         <a class="button button-small btnP" href="<?=base_url?>post/eliminar&id=<?=$posteo->idPost?>">Eliminar Post</a>
     </div>
-    <hr>
+    <hr><hr>
 </div>
 <?php endwhile; ?>

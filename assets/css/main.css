@@ -231,8 +231,8 @@ button, .button{
 }
 
 .button{
-    background: #121212;
-    color: #DB8C47 !important;
+    background: #2979CD;
+    color: white !important;
     text-decoration: none;
 }
 
@@ -298,8 +298,15 @@ button{
     margin-top: 5px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.btnP {
+.blog-post-btn {
+    /*border: solid 1px red;*/
+    columns: 2;
+    margin-top: 10px;
+}
+a .btnP {
+    /*border: solid 1px red;*/
     margin: 20px;
+
 }
 #divimg {
     width: 50% !important;
@@ -310,6 +317,14 @@ button{
     height: 250px;
     border-radius: 50% 50% 50% 50%;
     margin-left: 50%;
+}
+
+.btnListar{
+    display: flex;
+    justify-content: center;
+}
+.btnListar a {
+    margin-left: 10px;
 }
 
 /*FOOTER*/
